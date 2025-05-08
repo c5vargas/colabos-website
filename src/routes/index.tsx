@@ -1,32 +1,22 @@
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import { SignIn, SignUp, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
-import { lazy, Suspense } from "react";
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
+import { lazy } from "react";
 
-import LoadingFallback from "@/contexts/shared/components/ui/LoadingFallback";
+import LazyWrapper from "@/contexts/shared/components/ui/LazyWrapper";
 import NotesRoutes from "@/contexts/notes/routes";
+import AuthRoutes from "@/contexts/auth/routes";
 
-// Lazy loading de layouts
 const AuthLayout = lazy(() => import("@/contexts/auth/layouts/AuthLayout"));
 const AppLayout = lazy(() => import("@/contexts/dashboard/layouts/AppLayout"));
 
-// Lazy loading de páginas
 const DashboardPage = lazy(() => import("@/contexts/dashboard/pages/DashboardPage"));
 const NotFoundPage = lazy(() => import("@/contexts/shared/pages/NotFoundPage"));
 
-// Wrapper para componentes lazy
-const LazyWrapper = ({ children }: { children: React.ReactNode }) => (
-  <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
-);
-
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/auth",
     element: <LazyWrapper><AuthLayout /></LazyWrapper>,
-    children: [
-      { index: true, element: <Navigate to="/sign-in" replace /> },
-      { path: "sign-in/*", element: <SignIn routing="path" path="/sign-in" /> },
-      { path: "sign-up/*", element: <SignUp routing="path" path="/sign-up" /> },
-    ],
+    children: AuthRoutes,
   },
   {
     path: "/app",

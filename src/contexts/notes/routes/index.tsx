@@ -1,23 +1,21 @@
 import type { RouteObject } from "react-router-dom";
-import { Suspense } from "react";
-
-import LoadingFallback from "@/contexts/shared/components/ui/LoadingFallback";
+import LazyWrapper from "@/contexts/shared/components/ui/LazyWrapper";
 
 const NotesRoutes: RouteObject[] = [
   { 
     index: true, 
     element: (
-      <Suspense fallback={<LoadingFallback />}>
+      <LazyWrapper>
         <div>NotesPage</div>
-      </Suspense>
+      </LazyWrapper>
     ) 
   },
   { 
     path: ":noteId", 
     element: (
-      <Suspense fallback={<LoadingFallback />}>
+      <LazyWrapper>
         <div>NoteDetailPage</div>
-      </Suspense>
+      </LazyWrapper>
     ) 
   },
 ];

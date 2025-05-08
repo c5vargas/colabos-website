@@ -2,7 +2,12 @@
 
 Este archivo define las reglas, convenciones y buenas prácticas que debe seguir **cualquier funcionalidad nueva, corrección de errores, o modificación** del código del proyecto frontend de **ColabOS**.
 
-Está pensado para ser usado por desarrolladores humanos **y por herramientas de generación de código asistidas por IA**.
+
+## 🎯 Objetivo del Proyecto
+
+ColabOS: Sistema Operativo Colaborativo en la Web
+
+Descripción: Una especie de “escritorio virtual” donde los usuarios pueden crear, compartir y colaborar en notas, tareas, links, y archivos en tiempo real.
 
 ---
 
@@ -13,7 +18,7 @@ Está pensado para ser usado por desarrolladores humanos **y por herramientas de
 - El enrutamiento se realiza con **React Router v6+**.
 - Se utiliza **Zustand** para manejo de estado local/global ligero.
 - Estilos con **TailwindCSS**.
-- Se consume una **API externa (Laravel)** mediante **Axios**.
+- Se consume una **API externa (Supabase)**.
 
 ---
 
