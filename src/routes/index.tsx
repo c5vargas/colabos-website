@@ -1,41 +1,54 @@
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
-import { lazy } from "react";
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react'
+import { lazy } from 'react'
 
-import LazyWrapper from "@/contexts/shared/components/ui/LazyWrapper";
-import NotesRoutes from "@/contexts/notes/routes";
-import AuthRoutes from "@/contexts/auth/routes";
+import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper'
+import NotesRoutes from '@/contexts/notes/routes'
+import AuthRoutes from '@/contexts/auth/routes'
 
-const AuthLayout = lazy(() => import("@/contexts/auth/layouts/AuthLayout"));
-const AppLayout = lazy(() => import("@/contexts/dashboard/layouts/AppLayout"));
+const AuthLayout = lazy(() => import('@/contexts/auth/layouts/AuthLayout'))
+const AppLayout = lazy(() => import('@/contexts/dashboard/layouts/AppLayout'))
 
-const DashboardPage = lazy(() => import("@/contexts/dashboard/pages/DashboardPage"));
-const NotFoundPage = lazy(() => import("@/contexts/shared/pages/NotFoundPage"));
+const DashboardPage = lazy(() => import('@/contexts/dashboard/pages/DashboardPage'))
+const NotFoundPage = lazy(() => import('@/contexts/shared/pages/NotFoundPage'))
 
 const router = createBrowserRouter([
   {
-    path: "/auth",
-    element: <LazyWrapper><AuthLayout /></LazyWrapper>,
+    path: '/auth',
+    element: (
+      <LazyWrapper>
+        <AuthLayout />
+      </LazyWrapper>
+    ),
     children: AuthRoutes,
   },
   {
-    path: "/app",
+    path: '/app',
     element: (
       <SignedIn>
-        <LazyWrapper><AppLayout /></LazyWrapper>
+        <LazyWrapper>
+          <AppLayout />
+        </LazyWrapper>
       </SignedIn>
     ),
     children: [
       { index: true, element: <Navigate to="/app/dashboard" replace /> },
-      { path: "dashboard", element: <LazyWrapper><DashboardPage /></LazyWrapper> },
-      { path: "notes/*", children: NotesRoutes },
-      { path: "tasks/*", children: [] },
-      { path: "links/*", children: [] },
-      { path: "files/*", children: [] },
+      {
+        path: 'dashboard',
+        element: (
+          <LazyWrapper>
+            <DashboardPage />
+          </LazyWrapper>
+        ),
+      },
+      { path: 'notes/*', children: NotesRoutes },
+      { path: 'tasks/*', children: [] },
+      { path: 'links/*', children: [] },
+      { path: 'files/*', children: [] },
     ],
   },
   {
-    path: "/app/*",
+    path: '/app/*',
     element: (
       <SignedOut>
         <RedirectToSignIn />
@@ -43,12 +56,15 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "*",
-    element: <LazyWrapper><NotFoundPage /></LazyWrapper>,
+    path: '*',
+    element: (
+      <LazyWrapper>
+        <NotFoundPage />
+      </LazyWrapper>
+    ),
   },
-]);
+])
 
 export default function AppRouter() {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }
-

@@ -1,13 +1,13 @@
-import { Outlet } from "react-router-dom";
-import { useUser } from "@clerk/clerk-react";
+import { useUser } from '@clerk/clerk-react'
+import { Outlet } from 'react-router-dom'
 
 export default function AppLayout() {
-  const { user } = useUser();
+  const { user } = useUser()
 
   return (
     <div className="min-h-screen bg-gray-100">
       <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl font-bold text-gray-900">ColabOS</h1>
           <div className="flex items-center space-x-4">
             <span>Hola, {user?.firstName}</span>
@@ -15,10 +15,10 @@ export default function AppLayout() {
         </div>
       </header>
       <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
           <Outlet />
         </div>
       </main>
     </div>
-  );
+  )
 }

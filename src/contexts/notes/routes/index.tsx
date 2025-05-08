@@ -1,23 +1,23 @@
-import type { RouteObject } from "react-router-dom";
-import LazyWrapper from "@/contexts/shared/components/ui/LazyWrapper";
+import type { RouteObject } from 'react-router-dom'
+import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper'
 
 const NotesRoutes: RouteObject[] = [
-  { 
-    index: true, 
+  {
+    index: true,
     element: (
       <LazyWrapper>
         <div>NotesPage</div>
       </LazyWrapper>
-    ) 
+    ),
   },
-  { 
-    path: ":noteId", 
+  {
+    path: ':noteId',
     element: (
       <LazyWrapper>
         <div>NoteDetailPage</div>
       </LazyWrapper>
-    ) 
+    ),
   },
-];
+]
 
-export default NotesRoutes;
+export default NotesRoutes
