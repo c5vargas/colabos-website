@@ -1,12 +1,78 @@
-{ 
-	"authLayout": {
-		"descr": "Your collaborative cloud desktop"
-	},
-	"appLayout": {
-		"hello": "Hello, {{name}}"
-	},
-	"notFoundPage": {
-		"descr": "Page not found",
-		"backToHome": "Back to home"
-	}
+{
+  "authLayout": {
+    "h1": "Elevate your productivity",
+    "h2": "Organize, collaborate, and achieve your goals in real time.",
+    "p": "Your virtual desktop awaits",
+    "descr": "Your ultimate collaborative cloud workspace"
+  },
+  "appLayout": {
+    "hello": "Hello, {{name}}"
+  },
+  "notFoundPage": {
+    "descr": "Page not found",
+    "backToHome": "Back to home"
+  },
+  "search": {
+    "shortcuts": {
+      "close": "to close",
+      "search": "to search"
+    },
+    "results": {
+      "title": "Results"
+    },
+    "title": "Global Search",
+    "placeholder": "Search..."
+  },
+  "workspace": {
+    "invite": "Invite"
+  },
+  "profile": {
+    "settings": "Settings",
+    "darkMode": "Dark Mode",
+    "signOut": "Sign Out"
+  },
+  "nav": {
+    "home": "Home",
+    "notes": "Notes",
+    "tasks": "Tasks",
+    "links": "Links",
+    "members": "Members",
+    "settings": "Settings"
+  },
+  "actions": {
+    "create": "New",
+    "close": "Close"
+  },
+  "create": {
+    "note": "New note",
+    "task": "New task",
+    "link": "New link",
+    "file": "New file"
+  },
+  "onboarding": {
+    "welcome": "Welcome, {{name}}!",
+    "description": "Let's set up your workspace in a few simple steps",
+    "workspace": {
+      "title": "Create your workspace",
+      "description": "Your workspace is where you and your team will collaborate",
+      "nameLabel": "Workspace name",
+      "namePlaceholder": "Enter workspace name",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "What's this workspace for?",
+      "continue": "Continue"
+    },
+    "invite": {
+      "title": "Invite team members",
+      "description": "Collaborate with your team by inviting them to your workspace",
+      "emailPlaceholder": "Enter email address",
+      "add": "Add",
+      "back": "Back",
+      "continue": "Continue"
+    },
+    "finish": {
+      "title": "All set!",
+      "description": "Your workspace is ready. Let's start collaborating!",
+      "button": "Go to Dashboard"
+    }
+  }
 }

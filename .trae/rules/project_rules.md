@@ -2,7 +2,6 @@
 
 Este archivo define las reglas, convenciones y buenas prácticas que debe seguir **cualquier funcionalidad nueva, corrección de errores, o modificación** del código del proyecto frontend de **ColabOS**.
 
-
 ## 🎯 Objetivo del Proyecto
 
 ColabOS: Sistema Operativo Colaborativo en la Web
@@ -33,9 +32,10 @@ Descripción: Una especie de “escritorio virtual” donde los usuarios pueden 
 ---
 
 ## 📁 Estructura de carpetas
+
 src/
 ├── contexts/
-│ ├── <module>/ → Un dominio funcional (ej: notes, tasks, files)
+│ ├── <module>/ → Un dominio funcional (ej: notes, tasks)
 │ │ ├── actions/ → Funciones que gestionan datos (ej: llamadas API)
 │ │ ├── components/ → Componentes específicos del módulo
 │ │ ├── hooks/ → Hooks específicos del módulo
@@ -80,7 +80,7 @@ src/
 
 ### 🌐 Servicios API
 
-- Usa el cliente de `axios` que hay en `contexts/shared/libs/axiosHTTPClient.ts` y ubica funciones de cada modulo en `src/contexts/NOMBRE_MODULO/actions/NOMBRE.ts`.  
+- Usa el cliente de `axios` que hay en `contexts/shared/libs/axiosHTTPClient.ts` y ubica funciones de cada modulo en `src/contexts/NOMBRE_MODULO/actions/NOMBRE.ts`.
 - Cualquier petición autenticada debe incluir el JWT de Clerk (`getToken()`).
 
 ### 🔄 Estado global
@@ -113,6 +113,7 @@ src/
 > "Crear un widget para tomar notas rápidas colaborativas, visibles solo para el usuario autenticado. Mostrarlo en el Dashboard, permitir crear, editar y borrar."
 
 🔁 La IA debe:
+
 - Ver si hay ya un widget base de notas. Si no, crear uno nuevo en `contexts/notes/components/QuickNotes.tsx`.
 - Conectar a API en `contexts/notes/actions/createNote.ts`.
 - Usar Zustand si se necesita sincronización entre componentes.
