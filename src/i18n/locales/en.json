@@ -1,12 +1,42 @@
-{ 
-	"authLayout": {
-		"descr": "Your collaborative cloud desktop"
-	},
-	"appLayout": {
-		"hello": "Hello, {{name}}"
-	},
-	"notFoundPage": {
-		"descr": "Page not found",
-		"backToHome": "Back to home"
-	}
+{
+  "authLayout": {
+    "descr": "Your collaborative cloud desktop"
+  },
+  "appLayout": {
+    "hello": "Hello, {{name}}"
+  },
+  "notFoundPage": {
+    "descr": "Page not found",
+    "backToHome": "Back to home"
+  },
+  "search": {
+    "title": "Global Search",
+    "placeholder": "Search..."
+  },
+  "workspace": {
+    "invite": "Invite"
+  },
+  "profile": {
+    "settings": "Settings",
+    "darkMode": "Dark Mode",
+    "signOut": "Sign Out"
+  },
+  "nav": {
+    "home": "Home",
+    "notes": "Notes",
+    "tasks": "Tasks",
+    "links": "Links",
+    "members": "Members",
+    "settings": "Settings"
+  },
+  "actions": {
+    "create": "New",
+    "close": "Close"
+  },
+  "create": {
+    "note": "New note",
+    "task": "New task",
+    "link": "New link",
+    "file": "New file"
+  }
 }

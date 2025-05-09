@@ -45,7 +45,6 @@ const router = createBrowserRouter([
       { path: 'notes/*', children: NotesRoutes },
       { path: 'tasks/*', children: [] },
       { path: 'links/*', children: [] },
-      { path: 'files/*', children: [] },
     ],
   },
   {
