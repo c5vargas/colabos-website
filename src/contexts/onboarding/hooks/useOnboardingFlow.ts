@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { createWorkspace } from '@/contexts/workspace/actions/createWorkspace';
 import { useAuth } from '@clerk/clerk-react';
+import { useState } from 'react';
 
 export interface WorkspaceFormData {
   name: string;
@@ -38,14 +38,7 @@ export function useOnboardingFlow() {
   const handleFinishSubmit = async () => {
     try {
       const token = await getToken({ template: 'supabase' });
-
-      await createWorkspace(
-        {
-          name: 'Mi Workspace',
-          description: 'Descripción',
-        },
-        token
-      );
+      await createWorkspace(workspaceData, token);
     } catch (error) {
       console.error('Error al crear el workspace:', error);
       throw error;
