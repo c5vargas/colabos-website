@@ -10,6 +10,13 @@
     "backToHome": "Back to home"
   },
   "search": {
+    "shortcuts": {
+      "close": "to close",
+      "search": "to search"
+    },
+    "results": {
+      "title": "Results"
+    },
     "title": "Global Search",
     "placeholder": "Search..."
   },

@@ -5,6 +5,7 @@ interface ModalProps {
   children: React.ReactNode;
   actions?: React.ReactNode;
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  className?: string;
   closeOnClickOutside?: boolean;
 }
 
@@ -15,6 +16,7 @@ const Modal: React.FC<ModalProps> = ({
   children,
   actions,
   size = 'md',
+  className,
   closeOnClickOutside = true,
 }) => {
   if (!isOpen) return null;
@@ -39,7 +41,9 @@ const Modal: React.FC<ModalProps> = ({
       role="dialog"
       aria-modal="true"
     >
-      <div className="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+      <div
+        className={`flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0 mx-auto ${className}`}
+      >
         <div
           className="fixed inset-0 bg-black-900 bg-opacity-75 transition-opacity"
           aria-hidden="true"
