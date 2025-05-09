@@ -41,7 +41,7 @@ export default function AppLayout() {
           isSidebarCollapsed={isSidebarCollapsed}
         />
 
-        <main className="flex-1 overflow-auto p-6 bg-black-800">
+        <main className="flex-1 overflow-auto p-6 bg-black-800 text-gray-200">
           <div className="max-w-7xl mx-auto">
             <Outlet />
           </div>
