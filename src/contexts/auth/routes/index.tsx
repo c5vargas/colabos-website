@@ -8,7 +8,7 @@ const SignInPage = lazy(() => import('@/contexts/auth/pages/SignInPage'))
 const SignUpPage = lazy(() => import('@/contexts/auth/pages/SignUpPage'))
 
 const AuthRoutes: RouteObject[] = [
-  { index: true, element: <Navigate to="/sign-in" replace /> },
+  { index: true, element: <Navigate to="/auth/sign-in" replace /> },
   {
     path: 'sign-in/*',
     element: (
