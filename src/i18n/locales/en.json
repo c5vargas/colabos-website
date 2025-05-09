@@ -1,0 +1,12 @@
+{ 
+	"authLayout": {
+		"descr": "Your collaborative cloud desktop"
+	},
+	"appLayout": {
+		"hello": "Hello, {{name}}"
+	},
+	"notFoundPage": {
+		"descr": "Page not found",
+		"backToHome": "Back to home"
+	}
+}

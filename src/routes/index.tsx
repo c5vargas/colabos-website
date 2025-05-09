@@ -5,6 +5,7 @@ import { lazy } from 'react'
 import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper'
 import NotesRoutes from '@/contexts/notes/routes'
 import AuthRoutes from '@/contexts/auth/routes'
+import LanguageWrapper from '@/contexts/shared/components/locale/LanguageWrapper'
 
 const AuthLayout = lazy(() => import('@/contexts/auth/layouts/AuthLayout'))
 const AppLayout = lazy(() => import('@/contexts/dashboard/layouts/AppLayout'))
@@ -66,5 +67,9 @@ const router = createBrowserRouter([
 ])
 
 export default function AppRouter() {
-  return <RouterProvider router={router} />
+  return (
+    <LanguageWrapper>
+      <RouterProvider router={router} />
+    </LanguageWrapper>
+  )
 }
