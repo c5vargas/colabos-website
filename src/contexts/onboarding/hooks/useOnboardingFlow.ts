@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { createWorkspace } from '@/contexts/workspace/actions/createWorkspace';
+import { useAuth } from '@clerk/clerk-react';
 
 export interface WorkspaceFormData {
   name: string;
@@ -13,6 +15,7 @@ const steps = ['workspace', 'invite', 'finish'] as const;
 type Step = (typeof steps)[number];
 
 export function useOnboardingFlow() {
+  const { getToken } = useAuth();
   const [currentStep, setCurrentStep] = useState<Step>('workspace');
   const [workspaceData, setWorkspaceData] = useState<WorkspaceFormData>({
     name: '',
@@ -32,6 +35,23 @@ export function useOnboardingFlow() {
     setCurrentStep('finish');
   };
 
+  const handleFinishSubmit = async () => {
+    try {
+      const token = await getToken({ template: 'supabase' });
+
+      await createWorkspace(
+        {
+          name: 'Mi Workspace',
+          description: 'Descripción',
+        },
+        token
+      );
+    } catch (error) {
+      console.error('Error al crear el workspace:', error);
+      throw error;
+    }
+  };
+
   return {
     steps,
     currentStep,
@@ -42,5 +62,6 @@ export function useOnboardingFlow() {
     setInviteData,
     handleWorkspaceSubmit,
     handleInviteSubmit,
+    handleFinishSubmit,
   };
 }

@@ -1,24 +1,28 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { checkIfWorkspaceExists } from '@/contexts/workspace/actions/checkIfWorkspaceExists';
 
 export function useOnboarding() {
   const [isFirstTime, setIsFirstTime] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+
+  const checkFirstTimeUser = async () => {
+    try {
+      setIsLoading(true);
+      const hasWorkspaces = await checkIfWorkspaceExists();
+      setIsFirstTime(!hasWorkspaces);
+    } catch (error) {
+      console.error('Error al verificar usuario nuevo:', error);
+      setIsFirstTime(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     checkFirstTimeUser();
   }, []);
-
-  const checkFirstTimeUser = async () => {
-    try {
-      // Aquí irá la lógica para verificar si el usuario tiene workspaces
-      // Si no tiene, setIsFirstTime(true)
-      // Si tiene, setIsFirstTime(false)
-      setIsFirstTime(true); // Temporally
-    } catch (error) {
-      console.error('Error checking first time user:', error);
-    }
-  };
 
   const redirectToOnboarding = useCallback(() => {
     if (isFirstTime) {
@@ -28,6 +32,7 @@ export function useOnboarding() {
 
   return {
     isFirstTime,
+    isLoading,
     redirectToOnboarding,
   };
 }

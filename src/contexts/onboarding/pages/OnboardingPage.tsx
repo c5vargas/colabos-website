@@ -22,6 +22,7 @@ export default function OnboardingPage() {
     setCurrentStep,
     handleWorkspaceSubmit,
     handleInviteSubmit,
+    handleFinishSubmit,
   } = useOnboardingFlow();
 
   return (
@@ -57,7 +58,7 @@ export default function OnboardingPage() {
               onBack={() => setCurrentStep('workspace')}
             />
           )}
-          {currentStep === 'finish' && <FinishStep />}
+          {currentStep === 'finish' && <FinishStep onFinish={handleFinishSubmit} />}
         </motion.div>
       </div>
     </div>

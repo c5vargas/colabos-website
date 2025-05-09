@@ -3,12 +3,17 @@ import { useT } from '@/contexts/shared/hooks/useT';
 import { useNavigate } from 'react-router-dom';
 import { useAnimations } from '@/contexts/shared/hooks/useAnimations';
 
-export const FinishStep: React.FC = () => {
+interface FinishStepProps {
+  onFinish: () => Promise<void>;
+}
+
+export const FinishStep: React.FC<FinishStepProps> = ({ onFinish }) => {
   const t = useT();
   const { fadeInUp } = useAnimations();
   const navigate = useNavigate();
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
+    await onFinish();
     navigate('/app/dashboard');
   };
 
