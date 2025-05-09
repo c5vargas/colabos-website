@@ -1,13 +1,13 @@
+import { useT } from '@/contexts/shared/hooks/useT';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useT } from '@/contexts/shared/hooks/useT';
 import {
   HomeIcon,
-  NotesIcon,
-  TasksIcon,
   LinksIcon,
   MembersIcon,
+  NotesIcon,
   SettingsIcon,
+  TasksIcon,
 } from '../DashboardIcons';
 
 interface NavigationProps {
@@ -33,7 +33,7 @@ const Navigation: React.FC<NavigationProps> = ({ collapsed = false }) => {
           key={item.to}
           to={item.to}
           className={({ isActive }) =>
-            `flex items-center px-2 py-2 text-sm font-medium rounded-md ${
+            `flex items-center rounded-md px-2 py-2 text-sm font-medium ${
               collapsed ? 'justify-center' : ''
             } ${
               isActive

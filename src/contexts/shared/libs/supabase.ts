@@ -14,6 +14,3 @@ export function createSupabaseClient(clerkToken?: string | null) {
     },
   });
 }
-
-// Cliente por defecto para operaciones no autenticadas
-export const supabase = createClient(supabaseUrl, supabaseKey);

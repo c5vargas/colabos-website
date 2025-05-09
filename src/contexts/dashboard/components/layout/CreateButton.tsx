@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useT } from '@/contexts/shared/hooks/useT';
 import { PlusIcon } from '@/contexts/dashboard/components/DashboardIcons';
+import { useT } from '@/contexts/shared/hooks/useT';
+import { useState } from 'react';
 
 interface CreateButtonProps {
   collapsed?: boolean;
@@ -18,8 +18,8 @@ const CreateButton: React.FC<CreateButtonProps> = ({ collapsed = false }) => {
     <div className="relative">
       <button
         onClick={toggleCreateMenu}
-        className={`flex items-center justify-center rounded-md bg-primary-500 px-3 py-2 text-sm font-medium text-white hover:bg-primary-600 transition-colors ${
-          collapsed ? 'w-10 h-10' : 'w-full'
+        className={`flex items-center justify-center rounded-md bg-primary-500 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600 ${
+          collapsed ? 'h-10 w-10' : 'w-full'
         }`}
         title={collapsed ? t('actions.create') : undefined}
       >
@@ -29,7 +29,7 @@ const CreateButton: React.FC<CreateButtonProps> = ({ collapsed = false }) => {
 
       {isCreateMenuOpen && (
         <div
-          className={`absolute ${collapsed ? 'left-full ml-2' : 'bottom-full mb-2'} bottom-2 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 z-50`}
+          className={`absolute ${collapsed ? 'left-full ml-2' : 'bottom-full mb-2'} bottom-2 z-50 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5`}
         >
           <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             {t('create.note')}

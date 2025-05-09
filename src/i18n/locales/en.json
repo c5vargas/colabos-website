@@ -3,7 +3,8 @@
     "h1": "Elevate your productivity",
     "h2": "Organize, collaborate, and achieve your goals in real time.",
     "p": "Your virtual desktop awaits",
-    "descr": "Your ultimate collaborative cloud workspace"
+    "descr": "Your ultimate collaborative cloud workspace",
+    "footer": "All rights reserved."
   },
   "appLayout": {
     "hello": "Hello, {{name}}"
@@ -24,7 +25,8 @@
     "placeholder": "Search..."
   },
   "workspace": {
-    "invite": "Invite"
+    "invite": "Invite",
+    "create": "Create Workspace"
   },
   "profile": {
     "settings": "Settings",
