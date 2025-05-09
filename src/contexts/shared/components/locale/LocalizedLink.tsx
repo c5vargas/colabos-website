@@ -1,5 +1,5 @@
 import React from 'react';
-import { type LinkProps, Link, useParams } from 'react-router-dom'; 
+import { type LinkProps, Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 export const LocalizedLink: React.FC<LinkProps> = ({ to, children, ...props }) => {
@@ -28,11 +28,13 @@ export const LocalizedLink: React.FC<LinkProps> = ({ to, children, ...props }) =
     }
   }
 
-  const newTo = typeof to === 'string'
-    ? processedPath
-    : { ...to, pathname: processedPath };
+  const newTo = typeof to === 'string' ? processedPath : { ...to, pathname: processedPath };
 
-  return <Link to={newTo} {...props}>{children}</Link>;
+  return (
+    <Link to={newTo} {...props}>
+      {children}
+    </Link>
+  );
 };
 
 export default LocalizedLink;

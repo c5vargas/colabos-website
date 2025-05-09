@@ -3,6 +3,4 @@ interface Language {
   name: string;
 }
 
-export const AVAILABLE_LANGUAGES: Language[] = [
-  { code: 'en', name: 'English' },
-];
+export const AVAILABLE_LANGUAGES: Language[] = [{ code: 'en', name: 'English' }];

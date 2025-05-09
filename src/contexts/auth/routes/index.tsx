@@ -1,11 +1,11 @@
-import type { RouteObject } from 'react-router-dom'
-import { Navigate } from 'react-router-dom'
-import { lazy } from 'react'
+import type { RouteObject } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { lazy } from 'react';
 
-import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper'
+import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper';
 
-const SignInPage = lazy(() => import('@/contexts/auth/pages/SignInPage'))
-const SignUpPage = lazy(() => import('@/contexts/auth/pages/SignUpPage'))
+const SignInPage = lazy(() => import('@/contexts/auth/pages/SignInPage'));
+const SignUpPage = lazy(() => import('@/contexts/auth/pages/SignUpPage'));
 
 const AuthRoutes: RouteObject[] = [
   { index: true, element: <Navigate to="/auth/sign-in" replace /> },
@@ -25,6 +25,6 @@ const AuthRoutes: RouteObject[] = [
       </LazyWrapper>
     ),
   },
-]
+];
 
-export default AuthRoutes
+export default AuthRoutes;

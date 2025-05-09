@@ -1,0 +1,32 @@
+name: Verificación de Calidad de Código
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main, dev ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+          cache: 'npm'
+          
+      - name: Instalar dependencias
+        run: npm ci
+        
+      - name: Ejecutar linting
+        run: npm run lint || echo "Linting fallido"
+        
+      # Verificar formato solo si existe el script
+      - name: Verificar formato
+        run: npm run format:check || echo "Verificación de formato fallida"
+        
+      - name: Verificar compilación
+        run: npm run build

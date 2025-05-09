@@ -1,7 +1,7 @@
-import { AVAILABLE_LANGUAGES } from "@/i18n/languages";
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { AVAILABLE_LANGUAGES } from '@/i18n/languages';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 const LanguageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { lang } = useParams<{ lang: string }>();

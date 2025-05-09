@@ -1,10 +1,10 @@
-import { useT } from '@/contexts/shared/hooks/useT'
-import { useUser } from '@clerk/clerk-react'
-import { Outlet } from 'react-router-dom'
+import { useT } from '@/contexts/shared/hooks/useT';
+import { useUser } from '@clerk/clerk-react';
+import { Outlet } from 'react-router-dom';
 
 export default function AppLayout() {
   const t = useT();
-  const { user } = useUser()
+  const { user } = useUser();
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -22,5 +22,5 @@ export default function AppLayout() {
         </div>
       </main>
     </div>
-  )
+  );
 }

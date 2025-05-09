@@ -1,17 +1,17 @@
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
-import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react'
-import { lazy } from 'react'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
+import { lazy } from 'react';
 
-import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper'
-import NotesRoutes from '@/contexts/notes/routes'
-import AuthRoutes from '@/contexts/auth/routes'
-import LanguageWrapper from '@/contexts/shared/components/locale/LanguageWrapper'
+import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper';
+import NotesRoutes from '@/contexts/notes/routes';
+import AuthRoutes from '@/contexts/auth/routes';
+import LanguageWrapper from '@/contexts/shared/components/locale/LanguageWrapper';
 
-const AuthLayout = lazy(() => import('@/contexts/auth/layouts/AuthLayout'))
-const AppLayout = lazy(() => import('@/contexts/dashboard/layouts/AppLayout'))
+const AuthLayout = lazy(() => import('@/contexts/auth/layouts/AuthLayout'));
+const AppLayout = lazy(() => import('@/contexts/dashboard/layouts/AppLayout'));
 
-const DashboardPage = lazy(() => import('@/contexts/dashboard/pages/DashboardPage'))
-const NotFoundPage = lazy(() => import('@/contexts/shared/pages/NotFoundPage'))
+const DashboardPage = lazy(() => import('@/contexts/dashboard/pages/DashboardPage'));
+const NotFoundPage = lazy(() => import('@/contexts/shared/pages/NotFoundPage'));
 
 const router = createBrowserRouter([
   {
@@ -64,12 +64,12 @@ const router = createBrowserRouter([
       </LazyWrapper>
     ),
   },
-])
+]);
 
 export default function AppRouter() {
   return (
     <LanguageWrapper>
       <RouterProvider router={router} />
     </LanguageWrapper>
-  )
+  );
 }

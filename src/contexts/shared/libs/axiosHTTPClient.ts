@@ -7,16 +7,16 @@ import axios, {
   type AxiosRequestConfig,
   type AxiosResponse,
   type InternalAxiosRequestConfig,
-} from 'axios'
-import { useAuth } from '@clerk/clerk-react'
+} from 'axios';
+import { useAuth } from '@clerk/clerk-react';
 
 // Tipos para mejorar la legibilidad y mantenibilidad
-export type ApiResponse<T> = Promise<AxiosResponse<T>>
-export type HttpMethod = 'get' | 'post' | 'put' | 'patch' | 'delete'
+export type ApiResponse<T> = Promise<AxiosResponse<T>>;
+export type HttpMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
 // Interfaces para los tipos de datos
 export interface RequestData {
-  [key: string]: unknown
+  [key: string]: unknown;
 }
 
 // Configuración base para todas las instancias de axios
@@ -27,34 +27,34 @@ const createAxiosConfig = (customConfig?: AxiosRequestConfig): AxiosRequestConfi
     Accept: 'application/json',
   },
   ...customConfig,
-})
+});
 
 // Instancia base de axios
-const axiosClient: AxiosInstance = axios.create(createAxiosConfig())
+const axiosClient: AxiosInstance = axios.create(createAxiosConfig());
 
 /**
  * Hook para obtener un cliente HTTP autenticado con el token de Clerk
  * @returns Cliente HTTP con interceptor para añadir token de autenticación
  */
 export const useAuthenticatedClient = () => {
-  const { getToken } = useAuth()
+  const { getToken } = useAuth();
 
   axiosClient.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
     try {
-      const token = await getToken()
+      const token = await getToken();
       if (token && config.headers) {
-        config.headers.Authorization = `Bearer ${token}`
+        config.headers.Authorization = `Bearer ${token}`;
       }
-      return config
+      return config;
     } catch (error) {
-      return Promise.reject(error)
+      return Promise.reject(error);
     }
-  })
+  });
 
   // Función para crear una nueva instancia con la misma configuración
   const createCustomClient = (customConfig?: AxiosRequestConfig): AxiosInstance => {
-    return axios.create(createAxiosConfig(customConfig))
-  }
+    return axios.create(createAxiosConfig(customConfig));
+  };
 
   // Objeto con métodos helper para peticiones autenticadas
   const authClient = {
@@ -70,10 +70,10 @@ export const useAuthenticatedClient = () => {
       axiosClient.delete<T>(url, config),
     instance: axiosClient,
     createCustomClient,
-  }
+  };
 
-  return authClient
-}
+  return authClient;
+};
 
 /**
  * Cliente HTTP para peticiones sin autenticación
@@ -90,10 +90,10 @@ const createApiClient = (instance: AxiosInstance) => ({
   delete: <T>(url: string, config?: AxiosRequestConfig): ApiResponse<T> =>
     instance.delete<T>(url, config),
   instance,
-})
+});
 
 // Cliente HTTP para peticiones sin autenticación
-export const httpClient = createApiClient(axiosClient)
+export const httpClient = createApiClient(axiosClient);
 
 // Exportación por defecto para mantener compatibilidad con código existente
-export default httpClient
+export default httpClient;
