@@ -1,0 +1,26 @@
+name: Verificación de Variables de Entorno
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.env.example'
+
+jobs:
+  check-env:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Verificar variables de entorno
+        run: |
+          if [ ! -f .env.example ]; then
+            echo "No se encontró archivo .env.example"
+            exit 1
+          fi
+          
+          # Listar variables requeridas (puedes personalizar esto)
+          echo "Verificando variables de entorno requeridas..."
+          grep -v '^#' .env.example | grep -v '^$' | cut -d '=' -f 1
+          
+          echo "Asegúrate de que estas variables estén configuradas en tu proyecto de Vercel"
