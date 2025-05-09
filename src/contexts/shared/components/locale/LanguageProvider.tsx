@@ -8,10 +8,7 @@ interface LanguageProviderProps {
   canUseParams?: boolean;
 }
 
-const LanguageProvider: React.FC<LanguageProviderProps> = ({
-  children,
-  canUseParams = false
-}) => {
+const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, canUseParams = false }) => {
   const params = useParams<{ lang?: string }>();
   const { i18n } = useTranslation();
 

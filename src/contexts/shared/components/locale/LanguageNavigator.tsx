@@ -44,7 +44,7 @@ const LanguageNavigator: React.FC<LanguageNavigatorProps> = ({ className }) => {
       <select
         value={currentLanguage}
         onChange={(e) => changeLanguage(e.target.value)}
-        className="bg-white border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="rounded border border-gray-300 bg-white px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         {languages.map((language) => (
           <option key={language.code} value={language.code}>

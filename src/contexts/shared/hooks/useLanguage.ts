@@ -7,10 +7,10 @@ export const useLanguage = () => {
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
   useEffect(() => {
-		const savedLanguage = localStorage.getItem('user-language');
-		if (savedLanguage) {
-			changeLanguage(savedLanguage);
-		}
+    const savedLanguage = localStorage.getItem('user-language');
+    if (savedLanguage) {
+      changeLanguage(savedLanguage);
+    }
   }, []);
 
   const changeLanguage = async (langCode: string) => {

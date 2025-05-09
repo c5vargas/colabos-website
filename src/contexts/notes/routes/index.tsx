@@ -1,5 +1,5 @@
-import type { RouteObject } from 'react-router-dom'
-import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper'
+import type { RouteObject } from 'react-router-dom';
+import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper';
 
 const NotesRoutes: RouteObject[] = [
   {
@@ -18,6 +18,6 @@ const NotesRoutes: RouteObject[] = [
       </LazyWrapper>
     ),
   },
-]
+];
 
-export default NotesRoutes
+export default NotesRoutes;

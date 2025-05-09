@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 interface LoadingFallbackProps {
-  minHeight?: string
-  spinnerSize?: string
+  minHeight?: string;
+  spinnerSize?: string;
 }
 
 /**
@@ -18,6 +18,6 @@ const LoadingFallback: React.FC<LoadingFallbackProps> = ({
       className={`animate-spin rounded-full ${spinnerSize} border-b-2 border-t-2 border-blue-500`}
     ></div>
   </div>
-)
+);
 
-export default LoadingFallback
+export default LoadingFallback;

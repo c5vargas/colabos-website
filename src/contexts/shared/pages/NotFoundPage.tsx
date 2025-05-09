@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
-import { useT } from '../hooks/useT'
+import { Link } from 'react-router-dom';
+import { useT } from '../hooks/useT';
 
 export default function NotFoundPage() {
   const t = useT();
-  
+
   return (
     <div className="flex min-h-screen flex-col justify-center bg-gray-100 py-12 sm:px-6 lg:px-8">
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -19,5 +19,5 @@ export default function NotFoundPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
