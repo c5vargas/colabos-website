@@ -1,10 +1,20 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { useOnboarding } from '@/contexts/onboarding/hooks/useOnboarding';
 import { Outlet } from 'react-router-dom';
 import TopBar from '@/contexts/dashboard/components/layout/TopBar';
 import Sidebar from '@/contexts/dashboard/components/layout/Sidebar';
 import SearchModal from '@/contexts/dashboard/components/layout/SearchModal';
 
 export default function AppLayout() {
+  const { isFirstTime, redirectToOnboarding } = useOnboarding();
+
+  useEffect(() => {
+    if (isFirstTime) {
+      redirectToOnboarding();
+    }
+  }, [isFirstTime, redirectToOnboarding]);
+
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 

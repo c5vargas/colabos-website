@@ -11,6 +11,7 @@ const AuthLayout = lazy(() => import('@/contexts/auth/layouts/AuthLayout'));
 const AppLayout = lazy(() => import('@/contexts/dashboard/layouts/AppLayout'));
 
 const DashboardPage = lazy(() => import('@/contexts/dashboard/pages/DashboardPage'));
+const OnboardingPage = lazy(() => import('@/contexts/onboarding/pages/OnboardingPage'));
 const NotFoundPage = lazy(() => import('@/contexts/shared/pages/NotFoundPage'));
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       </LazyWrapper>
     ),
     children: AuthRoutes,
+  },
+  {
+    path: '/onboarding',
+    element: <OnboardingPage />,
   },
   {
     path: '/app',
