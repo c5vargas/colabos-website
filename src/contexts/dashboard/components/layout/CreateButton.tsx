@@ -1,4 +1,5 @@
 import { PlusIcon } from '@/contexts/dashboard/components/DashboardIcons';
+import { CreateLinkModal } from '@/contexts/links/components/CreateLinkModal';
 import { useT } from '@/contexts/shared/hooks/useT';
 import { useState } from 'react';
 
@@ -9,6 +10,7 @@ interface CreateButtonProps {
 const CreateButton: React.FC<CreateButtonProps> = ({ collapsed = false }) => {
   const t = useT();
   const [isCreateMenuOpen, setIsCreateMenuOpen] = useState(false);
+  const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
 
   const toggleCreateMenu = () => {
     setIsCreateMenuOpen(!isCreateMenuOpen);
@@ -29,7 +31,9 @@ const CreateButton: React.FC<CreateButtonProps> = ({ collapsed = false }) => {
 
       {isCreateMenuOpen && (
         <div
-          className={`absolute ${collapsed ? 'left-full ml-2' : 'bottom-full mb-2'} bottom-2 z-50 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5`}
+          className={`absolute ${
+            collapsed ? 'left-full ml-2' : 'bottom-full mb-2'
+          } bottom-2 z-50 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5`}
         >
           <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             {t('create.note')}
@@ -37,14 +41,19 @@ const CreateButton: React.FC<CreateButtonProps> = ({ collapsed = false }) => {
           <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             {t('create.task')}
           </a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+          <button
+            onClick={() => {
+              setIsLinkModalOpen(true);
+              setIsCreateMenuOpen(false);
+            }}
+            className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+          >
             {t('create.link')}
-          </a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-            {t('create.file')}
-          </a>
+          </button>
         </div>
       )}
+
+      <CreateLinkModal isOpen={isLinkModalOpen} onClose={() => setIsLinkModalOpen(false)} />
     </div>
   );
 };

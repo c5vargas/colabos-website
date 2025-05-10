@@ -42,8 +42,9 @@
     "settings": "Settings"
   },
   "actions": {
-    "create": "New",
-    "close": "Close"
+    "create": "Create",
+    "close": "Close",
+    "cancel": "Cancel"
   },
   "create": {
     "note": "New note",
@@ -76,5 +77,29 @@
       "description": "Your workspace is ready. Let's start collaborating!",
       "button": "Go to Dashboard"
     }
+  },
+  "links": {
+    "name": "Link name",
+    "namePlaceholder": "Enter link name",
+    "url": "Link URL",
+    "urlPlaceholder": "Enter link URL",
+    "category": "Category",
+    "categoryPlaceholder": "Select category",
+    "image": "Featured image",
+    "imagePlaceholder": "Select image",
+    "create": {
+      "title": "Create link"
+    }
+  },
+  "fileInput": {
+    "dragAndDrop": "Drag and drop files here",
+    "or": "or",
+    "browse": "browse files",
+    "acceptedFormats": "Accepted formats",
+    "errorSize": "File exceeds maximum size of {{size}} MB",
+    "errorType": "File type not supported",
+    "uploadProgress": "Uploading... {{progress}}%",
+    "uploadComplete": "Upload complete",
+    "uploadFailed": "Upload failed"
   }
 }
