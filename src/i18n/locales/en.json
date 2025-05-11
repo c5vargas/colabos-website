@@ -87,8 +87,14 @@
     "categoryPlaceholder": "Select category",
     "image": "Featured image",
     "imagePlaceholder": "Select image",
+    "open": "Visit",
     "create": {
       "title": "Create link"
+    },
+    "actions": {
+      "favorite": "Add to favorites",
+      "edit": "Edit details",
+      "delete": "Remove"
     }
   },
   "fileInput": {
