@@ -13,7 +13,6 @@ interface UseLinkCardItemReturn {
   handleContextMenu: (e: MouseEvent) => void;
   handleCloseMenu: () => void;
   handleFavorite: () => void;
-  handleEdit: () => void;
   handleDelete: () => void;
 }
 
@@ -23,7 +22,6 @@ interface UseLinkCardItemReturn {
  */
 export const useLinkCardItem = (
   link: Link,
-  onEdit?: (link: Link) => void,
   onDelete?: (linkId: string) => void,
 ): UseLinkCardItemReturn => {
   const [imageUrl, setImageUrl] = useState<string>(link.image_src || '');

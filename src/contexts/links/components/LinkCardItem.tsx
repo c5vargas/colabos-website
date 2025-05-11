@@ -16,12 +16,7 @@ interface LinkCardItemProps {
  * Componente que muestra un enlace en formato de tarjeta
  * Incluye menú contextual con opciones como favorito, editar y eliminar
  */
-const LinkCardItem: React.FC<LinkCardItemProps> = ({
-  link,
-  style = 'modern',
-  onEdit,
-  onDelete,
-}) => {
+const LinkCardItem: React.FC<LinkCardItemProps> = ({ link, style = 'modern', onDelete }) => {
   const { fadeInUp, hoverScale } = useAnimations();
 
   const {
@@ -32,7 +27,7 @@ const LinkCardItem: React.FC<LinkCardItemProps> = ({
     handleCloseMenu,
     handleFavorite,
     handleDelete,
-  } = useLinkCardItem(link, onEdit, onDelete);
+  } = useLinkCardItem(link, onDelete);
 
   if (style === 'modern') {
     return (

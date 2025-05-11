@@ -1,3 +1,4 @@
+import { deleteLink } from '@/contexts/links/actions/deleteLink';
 import { fetchLinks } from '@/contexts/links/actions/fetchLinks';
 import { useLinksStore } from '@/contexts/links/store/useLinksStore';
 import { useWorkspaceStore } from '@/contexts/workspace/store/useWorkspaceStore';
@@ -15,7 +16,7 @@ export function useLinks() {
 
   const { selectedWorkspace } = useWorkspaceStore();
 
-  const { links, setLinks, addLink, updateLink, removeLink, clearLinks } = useLinksStore();
+  const { links, setLinks, removeLink, clearLinks } = useLinksStore();
 
   const loadLinks = useCallback(async () => {
     if (!selectedWorkspace) return;
@@ -35,28 +36,17 @@ export function useLinks() {
     }
   }, [selectedWorkspace, getToken, setLinks]);
 
-  const filterLinksByCategory = useCallback(
-    (category: string) => {
-      if (!category) return links;
-      return links.filter((link) => link.category === category);
-    },
-    [links],
-  );
-
-  const searchLinks = useCallback(
-    (searchTerm: string) => {
-      if (!searchTerm.trim()) return links;
-
-      const term = searchTerm.toLowerCase();
-      return links.filter(
-        (link) =>
-          link.name.toLowerCase().includes(term) ||
-          link.url.toLowerCase().includes(term) ||
-          (link.category && link.category.toLowerCase().includes(term)),
-      );
-    },
-    [links],
-  );
+  const handleRemove = async (linkId: string) => {
+    try {
+      const token = (await getToken()) || '';
+      await deleteLink(token, linkId);
+      removeLink(linkId);
+      loadLinks();
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Error al eliminar el link';
+      setError(errorMessage);
+    }
+  };
 
   useEffect(() => {
     if (selectedWorkspace) {
@@ -71,11 +61,7 @@ export function useLinks() {
     isLoading,
     error,
     loadLinks,
-    filterLinksByCategory,
-    searchLinks,
-    addLink,
-    updateLink,
-    removeLink,
+    handleRemove,
     clearLinks,
   };
 }

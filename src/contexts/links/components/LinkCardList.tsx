@@ -6,7 +6,7 @@ interface LinksCardListProps {
 }
 
 const LinksCardList: React.FC<LinksCardListProps> = ({ cardStyle }) => {
-  const { links } = useLinks();
+  const { links, handleRemove } = useLinks();
 
   const gridClassName =
     cardStyle === 'modern'
@@ -17,7 +17,7 @@ const LinksCardList: React.FC<LinksCardListProps> = ({ cardStyle }) => {
     <section className="rounded-2xl py-8">
       <div className={gridClassName}>
         {links.map((link) => (
-          <LinkCardItem link={link} key={link.id} style={cardStyle} />
+          <LinkCardItem link={link} key={link.id} style={cardStyle} onDelete={handleRemove} />
         ))}
       </div>
     </section>
