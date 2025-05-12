@@ -1,10 +1,12 @@
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
+import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/clerk-react';
 import { lazy } from 'react';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
 import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper';
-import NotesRoutes from '@/contexts/notes/routes';
+
 import AuthRoutes from '@/contexts/auth/routes';
+import LinksRoutes from '@/contexts/links/routes';
+import NotesRoutes from '@/contexts/notes/routes';
 import LanguageWrapper from '@/contexts/shared/components/locale/LanguageWrapper';
 
 const AuthLayout = lazy(() => import('@/contexts/auth/layouts/AuthLayout'));
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
       },
       { path: 'notes/*', children: NotesRoutes },
       { path: 'tasks/*', children: [] },
-      { path: 'links/*', children: [] },
+      { path: 'links/*', children: LinksRoutes },
     ],
   },
   {
