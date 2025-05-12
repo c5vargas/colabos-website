@@ -4,17 +4,36 @@ import { useLinks } from '@/contexts/links/hooks/useLinks';
 import type { Link } from '@/contexts/links/libs/types';
 import { useAuth } from '@clerk/clerk-react';
 import { useDragAndDrop } from '@formkit/drag-and-drop/react';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 interface LinksCardListProps {
   cardStyle: 'details' | 'modern';
+  searchTerm?: string;
+  categoryFilter?: string;
 }
 
-const LinksCardList: React.FC<LinksCardListProps> = ({ cardStyle }) => {
+const LinksCardList: React.FC<LinksCardListProps> = ({
+  cardStyle,
+  searchTerm = '',
+  categoryFilter = '',
+}) => {
   const { links, handleRemove, loadLinks } = useLinks();
   const { getToken } = useAuth();
 
-  const [parent, sortedLinks, setSortedLinks] = useDragAndDrop<HTMLDivElement, Link>(links);
+  const filteredLinks = useMemo(() => {
+    return links.filter((link) => {
+      const matchesSearch =
+        searchTerm === '' ||
+        link.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        link.url.toLowerCase().includes(searchTerm.toLowerCase());
+
+      const matchesCategory = categoryFilter === '' || link.category === categoryFilter;
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [links, searchTerm, categoryFilter]);
+
+  const [parent, sortedLinks, setSortedLinks] = useDragAndDrop<HTMLDivElement, Link>(filteredLinks);
 
   const handleDragEnd = async (newOrder: typeof links) => {
     try {
@@ -34,14 +53,14 @@ const LinksCardList: React.FC<LinksCardListProps> = ({ cardStyle }) => {
   };
 
   useEffect(() => {
-    setSortedLinks(links);
-  }, [links, setSortedLinks]);
+    setSortedLinks(filteredLinks);
+  }, [filteredLinks, setSortedLinks]);
 
   useEffect(() => {
-    if (links.length > 0 && sortedLinks.length === 0) {
+    if (filteredLinks.length > 0 && sortedLinks.length === 0) {
       setSortedLinks(links);
     }
-  }, [links, sortedLinks.length, setSortedLinks]);
+  }, [filteredLinks, sortedLinks.length, setSortedLinks]);
 
   useEffect(() => {
     if (sortedLinks.length > 0 && JSON.stringify(links) !== JSON.stringify(sortedLinks)) {

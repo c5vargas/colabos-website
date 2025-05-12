@@ -1,36 +1,55 @@
-import React from 'react';
+import { type ReactNode } from 'react';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps {
+  id?: string;
+  type?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
   label?: string;
-  error?: string;
+  required?: boolean;
   fullWidth?: boolean;
+  className?: string;
+  icon?: ReactNode;
 }
 
 const Input: React.FC<InputProps> = ({
+  id,
+  type = 'text',
+  value,
+  onChange,
+  placeholder,
   label,
-  error,
+  required = false,
   fullWidth = false,
   className = '',
-  id,
-  ...props
+  icon,
 }) => {
-  const baseStyles = `px-4 py-2 bg-black-700 border border-black-600 rounded-lg 
-                    text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-primary-500 
-                    focus:border-primary-500 focus:outline-none transition-colors`;
-
   return (
-    <div className={`${fullWidth ? 'w-full' : ''}`}>
+    <div className={`${fullWidth ? 'w-full' : ''} ${className}`}>
       {label && (
-        <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-2">
-          {label}
+        <label htmlFor={id} className="mb-2 block text-sm font-medium text-gray-300">
+          {label} {required && <span className="text-red-500">*</span>}
         </label>
       )}
-      <input
-        id={id}
-        className={`w-full ${baseStyles} ${error ? 'border-red-500' : ''} ${className}`}
-        {...props}
-      />
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      <div className="relative">
+        {icon && (
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            {icon}
+          </div>
+        )}
+        <input
+          id={id}
+          type={type}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          required={required}
+          className={`w-full rounded-md border border-gray-300 bg-black-800 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 ${
+            icon ? 'pl-10' : ''
+          }`}
+        />
+      </div>
     </div>
   );
 };
