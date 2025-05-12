@@ -1,13 +1,13 @@
+import { useT } from '@/contexts/shared/hooks/useT';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useT } from '@/contexts/shared/hooks/useT';
 import {
   HomeIcon,
-  NotesIcon,
-  TasksIcon,
   LinksIcon,
   MembersIcon,
+  NotesIcon,
   SettingsIcon,
+  TasksIcon,
 } from '../DashboardIcons';
 
 interface NavigationProps {
@@ -18,12 +18,12 @@ const Navigation: React.FC<NavigationProps> = ({ collapsed = false }) => {
   const t = useT();
 
   const navItems = [
-    { to: '/app/dashboard', icon: <HomeIcon />, label: t('nav.home') },
-    { to: '/app/notes', icon: <NotesIcon />, label: t('nav.notes') },
-    { to: '/app/tasks', icon: <TasksIcon />, label: t('nav.tasks') },
-    { to: '/app/links', icon: <LinksIcon />, label: t('nav.links') },
-    { to: '/app/members', icon: <MembersIcon />, label: t('nav.members') },
-    { to: '/app/settings', icon: <SettingsIcon />, label: t('nav.settings') },
+    { to: '/app/dashboard', icon: <HomeIcon className="size-5" />, label: t('nav.home') },
+    { to: '/app/notes', icon: <NotesIcon className="size-5" />, label: t('nav.notes') },
+    { to: '/app/tasks', icon: <TasksIcon className="size-5" />, label: t('nav.tasks') },
+    { to: '/app/links', icon: <LinksIcon className="size-5" />, label: t('nav.links') },
+    { to: '/app/members', icon: <MembersIcon className="size-5" />, label: t('nav.members') },
+    { to: '/app/settings', icon: <SettingsIcon className="size-5" />, label: t('nav.settings') },
   ];
 
   return (
@@ -33,7 +33,7 @@ const Navigation: React.FC<NavigationProps> = ({ collapsed = false }) => {
           key={item.to}
           to={item.to}
           className={({ isActive }) =>
-            `flex items-center px-2 py-2 text-sm font-medium rounded-md ${
+            `flex items-center rounded-md px-2 py-2 text-sm font-medium ${
               collapsed ? 'justify-center' : ''
             } ${
               isActive

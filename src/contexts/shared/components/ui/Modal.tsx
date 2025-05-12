@@ -42,7 +42,7 @@ const Modal: React.FC<ModalProps> = ({
       aria-modal="true"
     >
       <div
-        className={`flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0 mx-auto ${className}`}
+        className={`mx-auto flex min-h-screen items-end justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0 ${className}`}
       >
         <div
           className="fixed inset-0 bg-black-900 bg-opacity-75 transition-opacity"
@@ -55,18 +55,18 @@ const Modal: React.FC<ModalProps> = ({
         </span>
 
         <div
-          className={`inline-block transform overflow-hidden rounded-lg bg-black-800 text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full ${sizeClasses[size]} sm:align-middle border border-black-700`}
+          className={`inline-block transform overflow-hidden rounded-lg bg-black-800 text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full ${sizeClasses[size]} border border-black-700 sm:align-middle`}
         >
           {/* Header */}
           {title && (
-            <div className="bg-black-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div className="bg-black-800 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
               <h3 className="text-lg font-medium leading-6 text-gray-200" id="modal-title">
                 {title}
               </h3>
             </div>
           )}
 
-          <div className="bg-black-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">{children}</div>
+          <div className="bg-black-800 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">{children}</div>
 
           {actions && (
             <div className="bg-black-700 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

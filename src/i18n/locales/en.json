@@ -3,7 +3,8 @@
     "h1": "Elevate your productivity",
     "h2": "Organize, collaborate, and achieve your goals in real time.",
     "p": "Your virtual desktop awaits",
-    "descr": "Your ultimate collaborative cloud workspace"
+    "descr": "Your ultimate collaborative cloud workspace",
+    "footer": "All rights reserved."
   },
   "appLayout": {
     "hello": "Hello, {{name}}"
@@ -24,7 +25,8 @@
     "placeholder": "Search..."
   },
   "workspace": {
-    "invite": "Invite"
+    "invite": "Invite",
+    "create": "Create Workspace"
   },
   "profile": {
     "settings": "Settings",
@@ -40,8 +42,9 @@
     "settings": "Settings"
   },
   "actions": {
-    "create": "New",
-    "close": "Close"
+    "create": "Create",
+    "close": "Close",
+    "cancel": "Cancel"
   },
   "create": {
     "note": "New note",
@@ -74,5 +77,35 @@
       "description": "Your workspace is ready. Let's start collaborating!",
       "button": "Go to Dashboard"
     }
+  },
+  "links": {
+    "name": "Link name",
+    "namePlaceholder": "Enter link name",
+    "url": "Link URL",
+    "urlPlaceholder": "Enter link URL",
+    "category": "Category",
+    "categoryPlaceholder": "Select category",
+    "image": "Featured image",
+    "imagePlaceholder": "Select image",
+    "open": "Visit",
+    "create": {
+      "title": "Create link"
+    },
+    "actions": {
+      "favorite": "Add to favorites",
+      "edit": "Edit details",
+      "delete": "Remove"
+    }
+  },
+  "fileInput": {
+    "dragAndDrop": "Drag and drop files here",
+    "or": "or",
+    "browse": "browse files",
+    "acceptedFormats": "Accepted formats",
+    "errorSize": "File exceeds maximum size of {{size}} MB",
+    "errorType": "File type not supported",
+    "uploadProgress": "Uploading... {{progress}}%",
+    "uploadComplete": "Upload complete",
+    "uploadFailed": "Upload failed"
   }
 }

@@ -1,7 +1,7 @@
-import { useT } from '@/contexts/shared/hooks/useT';
-import WorkspaceSelector from '@/contexts/dashboard/components/layout/WorkspaceSelector';
-import SearchButton from '@/contexts/dashboard/components/layout/SearchButton';
 import ProfileMenu from '@/contexts/dashboard/components/layout/ProfileMenu';
+import SearchButton from '@/contexts/dashboard/components/layout/SearchButton';
+import WorkspaceSelector from '@/contexts/dashboard/components/layout/WorkspaceSelector';
+import { useT } from '@/contexts/shared/hooks/useT';
 import { ChevronLeftIcon, ChevronRightIcon } from '../DashboardIcons';
 
 interface TopBarProps {
@@ -14,7 +14,7 @@ const TopBar: React.FC<TopBarProps> = ({ onSearchOpen, onToggleSidebar, isSideba
   const t = useT();
 
   return (
-    <header className="bg-black-800 border-b border-black-700 z-10 sticky top-0">
+    <header className="sticky top-0 z-10 border-b border-black-700 bg-black-800">
       <div className="mx-auto flex h-16 max-w-full items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
           {/* Botón para colapsar/expandir sidebar */}
@@ -39,7 +39,7 @@ const TopBar: React.FC<TopBarProps> = ({ onSearchOpen, onToggleSidebar, isSideba
           <SearchButton onClick={onSearchOpen} />
 
           {/* Botón de invitar */}
-          <button className="rounded-md bg-primary-600 px-3 py-2 text-sm font-medium text-black-50 hover:bg-primary-500 transition-colors">
+          <button className="rounded-md bg-primary-600 px-3 py-2 text-sm font-medium text-black-50 transition-colors hover:bg-primary-500">
             {t('workspace.invite')}
           </button>
 

@@ -7,16 +7,10 @@ if (!supabaseUrl || !supabaseKey) {
   throw new Error('Missing Supabase environment variables');
 }
 
-// Función para crear el cliente de Supabase con el token de Clerk
 export function createSupabaseClient(clerkToken?: string | null) {
   return createClient(supabaseUrl, supabaseKey, {
-    global: {
-      headers: {
-        Authorization: clerkToken ? `Bearer ${clerkToken}` : '',
-      },
+    async accessToken() {
+      return Promise.resolve(clerkToken || '');
     },
   });
 }
-
-// Cliente por defecto para operaciones no autenticadas
-export const supabase = createClient(supabaseUrl, supabaseKey);

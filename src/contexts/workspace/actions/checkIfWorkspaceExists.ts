@@ -1,14 +1,10 @@
-import { supabase } from '@/contexts/shared/libs/supabase';
+import { createSupabaseClient } from '@/contexts/shared/libs/supabase';
 
-export async function checkIfWorkspaceExists(): Promise<boolean> {
-  try {
-    const { data: workspaces, error } = await supabase.from('workspaces').select('id').limit(1);
+export async function checkIfWorkspaceExists(clerkToken: string | null): Promise<boolean> {
+  const supabase = createSupabaseClient(clerkToken);
+  const { data, error } = await supabase.from('workspaces').select('id').limit(1);
 
-    if (error) throw error;
+  if (error) throw error;
 
-    return workspaces && workspaces.length > 0;
-  } catch (error) {
-    console.error('Error al verificar existencia de workspace:', error);
-    throw error;
-  }
+  return data && data.length > 0;
 }

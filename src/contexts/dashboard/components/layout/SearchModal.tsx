@@ -1,9 +1,9 @@
-import { useT } from '@/contexts/shared/hooks/useT';
-import { useState, useCallback } from 'react';
 import { SearchIcon } from '@/contexts/dashboard/components/DashboardIcons';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useAnimations } from '@/contexts/shared/hooks/useAnimations';
 import Modal from '@/contexts/shared/components/ui/Modal';
+import { useAnimations } from '@/contexts/shared/hooks/useAnimations';
+import { useT } from '@/contexts/shared/hooks/useT';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useCallback, useState } from 'react';
 
 interface SearchResult {
   id: string;

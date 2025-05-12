@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useUser, SignOutButton } from '@clerk/clerk-react';
 import { useT } from '@/contexts/shared/hooks/useT';
+import { SignOutButton, useUser } from '@clerk/clerk-react';
+import { useState } from 'react';
 
 const ProfileMenu: React.FC = () => {
   const { user } = useUser();
@@ -17,7 +17,7 @@ const ProfileMenu: React.FC = () => {
         onClick={toggleProfileMenu}
         className="flex items-center space-x-2 rounded-full bg-black-700 p-1 focus:outline-none focus:ring-2 focus:ring-primary-500"
       >
-        <div className="h-8 w-8 rounded-full bg-black-600 flex items-center justify-center overflow-hidden">
+        <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-black-600">
           {user?.hasImage ? (
             <img
               src={user.imageUrl}
