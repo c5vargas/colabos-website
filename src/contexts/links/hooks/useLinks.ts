@@ -39,9 +39,11 @@ export function useLinks() {
   const handleRemove = async (linkId: string) => {
     try {
       const token = (await getToken()) || '';
-      await deleteLink(token, linkId);
-      removeLink(linkId);
-      loadLinks();
+      const deleted = await deleteLink(token, linkId);
+
+      if (deleted) {
+        removeLink(linkId);
+      }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Error al eliminar el link';
       setError(errorMessage);

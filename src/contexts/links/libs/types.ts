@@ -6,6 +6,7 @@ export interface Link {
   user_id: string;
   image_src: string;
   category: string;
+  position: number;
   created_at: string;
   updated_at: string;
 }

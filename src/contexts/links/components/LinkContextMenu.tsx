@@ -47,7 +47,7 @@ const LinkContextMenu: React.FC<LinkContextMenuProps> = ({
   return (
     <motion.div
       ref={menuRef}
-      className="fixed z-50 w-48 rounded-md border border-black-700 bg-black-800 shadow-lg"
+      className="absolute z-50 w-48 rounded-md border border-black-700 bg-black-800 shadow-lg"
       style={{ top: position.y, left: position.x }}
       variants={fadeInDown}
       initial="hidden"
