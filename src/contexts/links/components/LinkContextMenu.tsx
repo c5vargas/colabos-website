@@ -1,3 +1,4 @@
+import { DeleteIcon, FavIcon } from '@/contexts/shared/components/ui/SharedIcons';
 import { useAnimations } from '@/contexts/shared/hooks/useAnimations';
 import { useT } from '@/contexts/shared/hooks/useT';
 import { motion } from 'framer-motion';
@@ -57,14 +58,18 @@ const LinkContextMenu: React.FC<LinkContextMenuProps> = ({
           onClick={onFavorite}
           className="flex w-full items-center px-4 py-2 text-sm text-gray-300 hover:bg-black-700"
         >
-          <span className="mr-2">⭐</span>
+          <span className="mr-2">
+            <FavIcon className="size-5" />
+          </span>
           {t('links.actions.favorite')}
         </button>
         <button
           onClick={onDelete}
           className="flex w-full items-center px-4 py-2 text-sm text-red-400 hover:bg-black-700"
         >
-          <span className="mr-2">🗑️</span>
+          <span className="mr-2">
+            <DeleteIcon className="size-5" />
+          </span>
           {t('links.actions.delete')}
         </button>
       </div>

@@ -16,7 +16,7 @@ export function useLinks() {
 
   const { selectedWorkspace } = useWorkspaceStore();
 
-  const { links, setLinks, removeLink, clearLinks } = useLinksStore();
+  const { links, addLink, setLinks, removeLink, clearLinks } = useLinksStore();
 
   const loadLinks = useCallback(async () => {
     if (!selectedWorkspace) return;
@@ -61,6 +61,7 @@ export function useLinks() {
     isLoading,
     error,
     loadLinks,
+    addLink,
     handleRemove,
     clearLinks,
   };

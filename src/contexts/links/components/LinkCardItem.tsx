@@ -66,7 +66,7 @@ const LinkCardItem: React.FC<LinkCardItemProps> = ({ link, style = 'modern', onD
       <motion.a
         href={link.url}
         target="_blank"
-        className="flex items-center gap-4 rounded rounded-2xl border border-black-600 bg-black-700 p-3 hover:bg-black-900"
+        className="relative flex items-center gap-4 rounded rounded-2xl border border-black-600 bg-black-700 p-3 hover:bg-black-900"
         variants={fadeInUp}
         initial="hidden"
         animate="visible"

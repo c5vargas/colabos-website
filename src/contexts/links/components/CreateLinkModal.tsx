@@ -1,12 +1,8 @@
-import { createLink } from '@/contexts/links/actions/createLink';
 import LinkForm from '@/contexts/links/components/LinkForm';
-import type { CreateLinkDTO } from '@/contexts/links/libs/types';
+import { useCreateLinkModal } from '@/contexts/links/hooks/useCreateLinkModal';
 import Button from '@/contexts/shared/components/ui/Button';
 import Modal from '@/contexts/shared/components/ui/Modal';
 import { useT } from '@/contexts/shared/hooks/useT';
-import { useWorkspaceStore } from '@/contexts/workspace/store/useWorkspaceStore';
-import { useAuth } from '@clerk/clerk-react';
-import { useEffect, useState } from 'react';
 
 interface CreateLinkModalProps {
   isOpen: boolean;
@@ -19,52 +15,7 @@ interface CreateLinkModalProps {
  */
 export const CreateLinkModal: React.FC<CreateLinkModalProps> = ({ isOpen, onClose }) => {
   const t = useT();
-  const { getToken } = useAuth();
-  const { selectedWorkspace } = useWorkspaceStore();
-
-  const [formData, setFormData] = useState<CreateLinkDTO>({
-    name: '',
-    url: '',
-    workspace_id: selectedWorkspace?.id || '',
-    image_src: '',
-    category: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      setIsSubmitting(true);
-
-      const token = await getToken();
-      const link = await createLink(token, formData);
-      console.log('Enlace creado:', link);
-      onClose();
-
-      setFormData({
-        name: '',
-        url: '',
-        workspace_id: selectedWorkspace?.id || '',
-        image_src: '',
-        category: '',
-      });
-    } catch (error) {
-      console.error('Error al crear el enlace:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  useEffect(() => {
-    if (!selectedWorkspace) return;
-    setFormData((prev) => {
-      return {
-        ...prev,
-        workspace_id: selectedWorkspace.id,
-      };
-    });
-  }, [selectedWorkspace]);
+  const { formData, isSubmitting, error, handleSubmit, handleChange } = useCreateLinkModal(onClose);
 
   const actions = (
     <>
@@ -86,7 +37,8 @@ export const CreateLinkModal: React.FC<CreateLinkModalProps> = ({ isOpen, onClos
       size="xl"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
-        <LinkForm formData={formData} onChange={setFormData} />
+        {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-600">{error}</div>}
+        <LinkForm formData={formData} onChange={handleChange} />
       </form>
     </Modal>
   );
