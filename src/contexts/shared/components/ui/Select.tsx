@@ -10,6 +10,7 @@ interface SelectProps {
   options: SelectOption[];
   placeholder?: string;
   label?: string;
+  disabled?: boolean;
   required?: boolean;
   fullWidth?: boolean;
   className?: string;
@@ -22,6 +23,7 @@ const Select: React.FC<SelectProps> = ({
   options,
   placeholder,
   label,
+  disabled = false,
   required = false,
   fullWidth = false,
   className = '',
@@ -38,6 +40,7 @@ const Select: React.FC<SelectProps> = ({
         value={value}
         onChange={onChange}
         required={required}
+        disabled={disabled}
         className="w-full rounded-md border border-gray-300 bg-black-800 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
       >
         {placeholder && <option value="">{placeholder}</option>}
