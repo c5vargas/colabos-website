@@ -24,7 +24,7 @@ const LinksSearchBar: React.FC<LinksSearchBarProps> = ({
   const categoryOptions = [...categories.map((category) => ({ value: category, label: category }))];
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row">
+    <div className="ms-auto flex max-w-xl flex-col gap-4 sm:flex-row">
       <div className="w-full sm:w-1/2">
         <Input
           id="search-links"

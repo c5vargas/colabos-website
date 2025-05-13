@@ -87,6 +87,8 @@
     "categoryPlaceholder": "Select category",
     "image": "Featured image",
     "imagePlaceholder": "Select image",
+    "search": "Type name...",
+    "allCategories": "All links",
     "open": "Visit",
     "create": {
       "title": "Create link"
