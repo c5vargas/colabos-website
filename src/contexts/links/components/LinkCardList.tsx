@@ -33,7 +33,14 @@ const LinksCardList: React.FC<LinksCardListProps> = ({
     });
   }, [links, searchTerm, categoryFilter]);
 
-  const [parent, sortedLinks, setSortedLinks] = useDragAndDrop<HTMLDivElement, Link>(filteredLinks);
+  const [parent, sortedLinks, setSortedLinks] = useDragAndDrop<HTMLDivElement, Link>(
+    filteredLinks,
+    {
+      draggable: () => {
+        return searchTerm === '';
+      },
+    },
+  );
 
   const handleDragEnd = async (newOrder: typeof links) => {
     try {
