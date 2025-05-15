@@ -1,16 +1,18 @@
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
-import { lazy } from 'react';
-
-import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper';
-import NotesRoutes from '@/contexts/notes/routes';
 import AuthRoutes from '@/contexts/auth/routes';
+import LinksRoutes from '@/contexts/links/routes';
+import MembersRoutes from '@/contexts/members/routes';
+import NotesRoutes from '@/contexts/notes/routes';
 import LanguageWrapper from '@/contexts/shared/components/locale/LanguageWrapper';
+import LazyWrapper from '@/contexts/shared/components/ui/LazyWrapper';
+import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/clerk-react';
+import { lazy } from 'react';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
 const AuthLayout = lazy(() => import('@/contexts/auth/layouts/AuthLayout'));
 const AppLayout = lazy(() => import('@/contexts/dashboard/layouts/AppLayout'));
 
 const DashboardPage = lazy(() => import('@/contexts/dashboard/pages/DashboardPage'));
+const OnboardingPage = lazy(() => import('@/contexts/onboarding/pages/OnboardingPage'));
 const NotFoundPage = lazy(() => import('@/contexts/shared/pages/NotFoundPage'));
 
 const router = createBrowserRouter([
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
       </LazyWrapper>
     ),
     children: AuthRoutes,
+  },
+  {
+    path: '/onboarding',
+    element: <OnboardingPage />,
   },
   {
     path: '/app',
@@ -43,9 +49,9 @@ const router = createBrowserRouter([
         ),
       },
       { path: 'notes/*', children: NotesRoutes },
+      { path: 'links/*', children: LinksRoutes },
       { path: 'tasks/*', children: [] },
-      { path: 'links/*', children: [] },
-      { path: 'files/*', children: [] },
+      { path: 'members/*', children: MembersRoutes },
     ],
   },
   {

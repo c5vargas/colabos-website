@@ -1,12 +1,152 @@
-{ 
-	"authLayout": {
-		"descr": "Your collaborative cloud desktop"
-	},
-	"appLayout": {
-		"hello": "Hello, {{name}}"
-	},
-	"notFoundPage": {
-		"descr": "Page not found",
-		"backToHome": "Back to home"
-	}
+{
+  "common": {
+    "loading": "Loading...",
+    "cancel": "Cancel"
+  },
+  "authLayout": {
+    "h1": "Elevate your productivity",
+    "h2": "Organize, collaborate, and achieve your goals in real time.",
+    "p": "Your virtual desktop awaits",
+    "descr": "Your ultimate collaborative cloud workspace",
+    "footer": "All rights reserved."
+  },
+  "appLayout": {
+    "hello": "Hello, {{name}}"
+  },
+  "notFoundPage": {
+    "descr": "Page not found",
+    "backToHome": "Back to home"
+  },
+  "search": {
+    "shortcuts": {
+      "close": "to close",
+      "search": "to search"
+    },
+    "results": {
+      "title": "Results"
+    },
+    "title": "Global Search",
+    "placeholder": "Search..."
+  },
+  "workspace": {
+    "invite": "Invite",
+    "create": "Create Workspace"
+  },
+  "profile": {
+    "settings": "Settings",
+    "darkMode": "Dark Mode",
+    "signOut": "Sign Out"
+  },
+  "nav": {
+    "home": "Home",
+    "notes": "Notes",
+    "tasks": "Tasks",
+    "links": "Links",
+    "members": "Members",
+    "settings": "Settings"
+  },
+  "actions": {
+    "create": "Create",
+    "close": "Close",
+    "cancel": "Cancel",
+    "update": "Update"
+  },
+  "create": {
+    "note": "New note",
+    "task": "New task",
+    "link": "New link",
+    "file": "New file"
+  },
+  "onboarding": {
+    "welcome": "Welcome, {{name}}!",
+    "description": "Let's set up your workspace in a few simple steps",
+    "workspace": {
+      "title": "Create your workspace",
+      "description": "Your workspace is where you and your team will collaborate",
+      "nameLabel": "Workspace name",
+      "namePlaceholder": "Enter workspace name",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "What's this workspace for?",
+      "continue": "Continue"
+    },
+    "invite": {
+      "title": "Invite team members",
+      "description": "Collaborate with your team by inviting them to your workspace",
+      "emailPlaceholder": "Enter email address",
+      "add": "Add",
+      "back": "Back",
+      "continue": "Continue"
+    },
+    "finish": {
+      "title": "All set!",
+      "description": "Your workspace is ready. Let's start collaborating!",
+      "button": "Go to Dashboard"
+    }
+  },
+  "links": {
+    "name": "Link name",
+    "namePlaceholder": "Enter link name",
+    "url": "Link URL",
+    "urlPlaceholder": "Enter link URL",
+    "category": "Category",
+    "categoryPlaceholder": "Select category",
+    "image": "Featured image",
+    "imagePlaceholder": "Select image",
+    "search": "Type name...",
+    "allCategories": "All links",
+    "open": "Visit",
+    "create": {
+      "title": "Create link"
+    },
+    "actions": {
+      "favorite": "Add to favorites",
+      "edit": "Edit details",
+      "delete": "Remove"
+    }
+  },
+  "fileInput": {
+    "dragAndDrop": "Drag and drop files here",
+    "or": "or",
+    "browse": "browse files",
+    "acceptedFormats": "Accepted formats",
+    "errorSize": "File exceeds maximum size of {{size}} MB",
+    "errorType": "File type not supported",
+    "uploadProgress": "Uploading... {{progress}}%",
+    "uploadComplete": "Upload complete",
+    "uploadFailed": "Upload failed"
+  },
+  "members": {
+    "title": "Members & Permissions",
+    "invite": "Invite member",
+    "searchPlaceholder": "Type...",
+    "noMembers": "Add members to your workspace",
+    "noResults": "No results found",
+    "allRoles": "All roles",
+    "inviteModalTitle": "Invite member",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter email address",
+    "roleLabel": "Role",
+    "roles": {
+      "admin": "Admin",
+      "editor": "Editor",
+      "viewer": "Viewer"
+    },
+    "email": "User email",
+    "role": "Role",
+    "status_label": "Status",
+    "actions": "Actions",
+    "remove": "Remove",
+    "status": {
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "rejected": "Rejected"
+    }
+  },
+  "notes": {
+    "color": "Choose color",
+    "tagsPlaceholder": "Add tag...",
+    "pinned": "Pinned",
+    "titlePlaceholder": "Enter note title",
+    "contentPlaceholder": "Start writing..."
+  }
 }

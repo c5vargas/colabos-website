@@ -1,26 +1,66 @@
-import { useT } from '@/contexts/shared/hooks/useT';
-import { useUser } from '@clerk/clerk-react';
+import SearchModal from '@/contexts/dashboard/components/layout/SearchModal';
+import Sidebar from '@/contexts/dashboard/components/layout/Sidebar';
+import TopBar from '@/contexts/dashboard/components/layout/TopBar';
+import { useOnboarding } from '@/contexts/onboarding/hooks/useOnboarding';
+import { useWorkspace } from '@/contexts/workspace/hooks/useWorkspace';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 export default function AppLayout() {
-  const t = useT();
-  const { user } = useUser();
+  const { isFirstTime, redirectToOnboarding } = useOnboarding();
+
+  useWorkspace();
+
+  useEffect(() => {
+    if (isFirstTime) {
+      redirectToOnboarding();
+    }
+  }, [isFirstTime, redirectToOnboarding]);
+
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  const handleSearchOpen = () => {
+    setIsSearchOpen(true);
+  };
+
+  const handleSearchClose = () => {
+    setIsSearchOpen(false);
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold text-gray-900">ColabOS</h1>
-          <div className="flex items-center space-x-4">
-            <span>{t('appLayout.hello', { name: user?.firstName })}</span>
+    <div className="flex h-screen bg-black-900">
+      <div
+        className={`fixed z-20 h-full transition-all duration-300 ease-in-out ${
+          isSidebarCollapsed ? 'w-16' : 'w-64'
+        }`}
+      >
+        <Sidebar collapsed={isSidebarCollapsed} />
+      </div>
+
+      <div
+        className={`flex flex-1 flex-col transition-all duration-300 ease-in-out ${
+          isSidebarCollapsed ? 'ml-16' : 'ml-64'
+        }`}
+      >
+        <TopBar
+          onSearchOpen={handleSearchOpen}
+          onToggleSidebar={toggleSidebar}
+          isSidebarCollapsed={isSidebarCollapsed}
+        />
+
+        <main className="custom-scrollbar flex-1 overflow-auto bg-black-800 p-6 text-gray-200">
+          <div className="mx-auto p-4">
+            <Outlet />
           </div>
-        </div>
-      </header>
-      <main>
-        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-          <Outlet />
-        </div>
-      </main>
+        </main>
+      </div>
+
+      <SearchModal isOpen={isSearchOpen} onClose={handleSearchClose} />
     </div>
   );
 }
