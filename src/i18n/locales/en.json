@@ -1,4 +1,8 @@
 {
+  "common": {
+    "loading": "Loading...",
+    "cancel": "Cancel"
+  },
   "authLayout": {
     "h1": "Elevate your productivity",
     "h2": "Organize, collaborate, and achieve your goals in real time.",
@@ -117,6 +121,10 @@
     "noMembers": "Add members to your workspace",
     "noResults": "No results found",
     "allRoles": "All roles",
+    "inviteModalTitle": "Invite member",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter email address",
+    "roleLabel": "Role",
     "roles": {
       "admin": "Admin",
       "editor": "Editor",
