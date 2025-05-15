@@ -48,7 +48,8 @@
   "actions": {
     "create": "Create",
     "close": "Close",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "update": "Update"
   },
   "create": {
     "note": "New note",
@@ -140,5 +141,12 @@
       "accepted": "Accepted",
       "rejected": "Rejected"
     }
+  },
+  "notes": {
+    "color": "Choose color",
+    "tagsPlaceholder": "Add tag...",
+    "pinned": "Pinned",
+    "titlePlaceholder": "Enter note title",
+    "contentPlaceholder": "Start writing..."
   }
 }

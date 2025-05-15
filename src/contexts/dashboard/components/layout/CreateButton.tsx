@@ -36,9 +36,6 @@ const CreateButton: React.FC<CreateButtonProps> = ({ collapsed = false }) => {
           } bottom-2 z-50 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5`}
         >
           <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-            {t('create.note')}
-          </a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             {t('create.task')}
           </a>
           <button

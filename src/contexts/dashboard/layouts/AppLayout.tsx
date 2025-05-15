@@ -53,7 +53,7 @@ export default function AppLayout() {
           isSidebarCollapsed={isSidebarCollapsed}
         />
 
-        <main className="flex-1 overflow-auto bg-black-800 p-6 text-gray-200">
+        <main className="custom-scrollbar flex-1 overflow-auto bg-black-800 p-6 text-gray-200">
           <div className="mx-auto p-4">
             <Outlet />
           </div>

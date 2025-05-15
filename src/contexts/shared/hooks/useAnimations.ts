@@ -82,6 +82,14 @@ export const useAnimations = () => {
     },
   };
 
+  const fastFadeIn: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.4 },
+    },
+  };
+
   const staggerItems: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -113,6 +121,7 @@ export const useAnimations = () => {
     staggerContainer,
     staggerItems,
     slowFadeIn,
+    fastFadeIn,
 
     // Elementos
     fadeInUp,
